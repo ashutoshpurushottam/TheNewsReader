@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/topStoriesFragment"
+        android:icon="@drawable/ic_top_stories"
+        android:title="@string/menu_top"/>
+
+    <item
+        android:id="@+id/mostPopularFragment"
+        android:icon="@drawable/ic_popular_stories"
+        android:title="@string/menu_popular"/>
+
+    <item
+        android:id="@+id/businessFragment"
+        android:icon="@drawable/ic_business_stories"
+        android:title="@string/menu_business"/>
+
+    <item
+        android:id="@+id/sportsFragment"
+        android:icon="@drawable/ic_sports_stories"
+        android:title="@string/menu_sports"/>
+
+
+</menu>
