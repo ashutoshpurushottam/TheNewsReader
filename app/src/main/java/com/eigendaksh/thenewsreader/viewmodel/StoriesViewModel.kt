@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 
 class StoriesViewModel(application: Application): AndroidViewModel(application) {
 
-    val observableTopStories: MutableLiveData<NewsResponse>?
-    val observablePopularStories: MutableLiveData<PopularNewsResponse>?
-    val observableSportsStories: MutableLiveData<NewsResponse>?
+    val observableTopStories: MutableLiveData<NewsResponse?>?
+    val observablePopularStories: MutableLiveData<PopularNewsResponse?>?
+    val observableSportsStories: MutableLiveData<NewsResponse?>?
 
     init {
         observableTopStories = MutableLiveData()

@@ -37,9 +37,18 @@ class TopStoriesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.observableTopStories?.observe(viewLifecycleOwner, Observer {
-            for (result in it.results) {
-                Log.i(TAG, result.title)
+        viewModel.observableTopStories?.observe(viewLifecycleOwner, Observer { newsResponse ->
+            if(newsResponse != null && newsResponse.numResults > 0) {
+                for (result in newsResponse.results) {
+                    Log.i(TAG, result.title)
+                    for(multimedia in result.multimedia) {
+                        Log.i(TAG, multimedia.url)
+                    }
+
+                    Log.i(TAG, "---------------------------------")
+                }
+            } else {
+                Log.w(TAG, "No news item can not be retrieved")
             }
         })
     }

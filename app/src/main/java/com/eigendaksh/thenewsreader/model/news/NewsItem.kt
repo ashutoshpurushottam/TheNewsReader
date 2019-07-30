@@ -1,17 +1,25 @@
 package com.eigendaksh.thenewsreader.model.news
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import org.threeten.bp.ZonedDateTime
 
+@Entity
 data class NewsItem(
-    val id: Long,
+    @PrimaryKey val id: Long,
     val `abstract`: String,
-    @Json(name = "created_date")
-    val createdDate: String,
+    @field:Json(name = "created_date")
+    @ColumnInfo(name = "created_date")
+    val createdDate: ZonedDateTime,
     val multimedia: List<Multimedia>,
-    @Json(name = "published_date")
-    val publishedDate: String,
+    @field:Json(name = "published_date")
+    @ColumnInfo(name = "published_date")
+    val publishedDate: ZonedDateTime,
     val title: String,
-    @Json(name = "updated_date")
-    val updatedDate: String,
+    @field:Json(name = "updated_date")
+    @ColumnInfo(name = "updated_date")
+    val updatedDate: ZonedDateTime,
     val url: String
 )
