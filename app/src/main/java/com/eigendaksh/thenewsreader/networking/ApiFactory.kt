@@ -1,6 +1,8 @@
 package com.eigendaksh.thenewsreader.networking
 
 import android.util.Log
+import com.eigendaksh.thenewsreader.internal.CoroutineCallAdapterFactory
+import com.eigendaksh.thenewsreader.model.helpers.StoryTypeAdapter
 import com.eigendaksh.thenewsreader.model.helpers.ZonedDateTimeAdapter
 import com.eigendaksh.thenewsreader.utils.AppConstants
 import com.squareup.moshi.Moshi
@@ -36,13 +38,18 @@ object ApiFactory {
         .readTimeout(30, TimeUnit.SECONDS).build()
 
     // Add adapter for Moshi
-    private val userMoshi = Moshi.Builder().add(ZonedDateTimeAdapter()).build()
+    private val userMoshi = Moshi
+        .Builder()
+        .add(ZonedDateTimeAdapter())
+        .add(StoryTypeAdapter())
+        .build()
 
     private fun retrofit(): Retrofit = Retrofit.Builder()
         .client(nyTimesClient)
         .baseUrl(AppConstants.BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(userMoshi))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val nyTimesApi: NyTimesApi = retrofit().create(NyTimesApi::class.java)
+    val service: NyTimesApiService = retrofit().create(NyTimesApiService::class.java)
 }

@@ -1,12 +1,24 @@
 package com.eigendaksh.thenewsreader.model.popular
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import org.threeten.bp.ZonedDateTime
 
+@Entity(tableName = "popular_news_item")
 data class PopularNewsItem(
-    val id: Long,
-    val media: List<Media>,
+    @PrimaryKey(autoGenerate = true) var itemId: Int = 0,
+
+    var id: Long? = -1,
+
+    var media: List<Media>? = emptyList(),
+
     @field:Json(name = "published_date")
-    val publishedDate: String,
-    val title: String,
-    val url: String
+    @ColumnInfo(name = "published_date")
+    var publishedDate: String? = "",
+
+    var title: String? = "",
+
+    val url: String? = ""
 )

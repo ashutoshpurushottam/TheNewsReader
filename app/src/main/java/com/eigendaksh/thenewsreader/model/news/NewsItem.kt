@@ -3,23 +3,37 @@ package com.eigendaksh.thenewsreader.model.news
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.eigendaksh.thenewsreader.model.helpers.Converters
 import com.squareup.moshi.Json
 import org.threeten.bp.ZonedDateTime
 
-@Entity
+@Entity(tableName = "news_item")
 data class NewsItem(
-    @PrimaryKey val id: Long,
-    val `abstract`: String,
+
+    @PrimaryKey(autoGenerate = true) var itemId: Int = 0,
+
+    var id: Long? = -1,
+
+    var `abstract`: String? = "",
+
     @field:Json(name = "created_date")
     @ColumnInfo(name = "created_date")
-    val createdDate: ZonedDateTime,
-    val multimedia: List<Multimedia>,
+    var createdDate: ZonedDateTime? = ZonedDateTime.now(),
+
+    var multimedia: List<Multimedia>? = emptyList(),
+
     @field:Json(name = "published_date")
     @ColumnInfo(name = "published_date")
-    val publishedDate: ZonedDateTime,
-    val title: String,
+    var publishedDate: ZonedDateTime? = ZonedDateTime.now(),
+
+    var title: String? = "",
+
     @field:Json(name = "updated_date")
     @ColumnInfo(name = "updated_date")
-    val updatedDate: ZonedDateTime,
-    val url: String
+    var updatedDate: ZonedDateTime? = ZonedDateTime.now(),
+
+    var url: String? = "",
+
+    var type: StoryType = StoryType.NONE
 )

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.eigendaksh.thenewsreader.R
-import com.eigendaksh.thenewsreader.viewmodel.StoriesViewModel
+import com.eigendaksh.thenewsreader.ui.viewmodel.StoriesViewModel
 
 
 class TopStoriesFragment : Fragment() {
@@ -37,19 +37,14 @@ class TopStoriesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.observableTopStories?.observe(viewLifecycleOwner, Observer { newsResponse ->
-            if(newsResponse != null && newsResponse.numResults > 0) {
-                for (result in newsResponse.results) {
-                    Log.i(TAG, result.title)
-                    for(multimedia in result.multimedia) {
-                        Log.i(TAG, multimedia.url)
-                    }
 
-                    Log.i(TAG, "---------------------------------")
+        viewModel.observableTopStories?.observe(viewLifecycleOwner, Observer { itemList ->
+            if(itemList != null) {
+                for(item in itemList) {
+                    Log.i(TAG, item.title ?: "empty")
                 }
-            } else {
-                Log.w(TAG, "No news item can not be retrieved")
             }
+
         })
     }
 
