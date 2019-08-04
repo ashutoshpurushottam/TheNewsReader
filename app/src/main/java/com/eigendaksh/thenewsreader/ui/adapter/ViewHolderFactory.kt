@@ -1,5 +1,6 @@
 package com.eigendaksh.thenewsreader.ui.adapter
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -40,10 +41,10 @@ object ViewHolderFactory {
             try {
                 url = data.multimedia?.get(0)?.url ?: ""
             } catch (e: IndexOutOfBoundsException) {
-                Glide.with(itemView)
+                Log.e("ViewHolderFactory", e.message)
             }
 
-            Glide.with(itemView.context).load(url).into(thumbnailView)
+            Glide.with(itemView.context).load(url).placeholder(R.drawable.ic_news).into(thumbnailView)
             dateView.text = data.publishedDate?.format(formatter)
 
             itemView.setOnClickListener {
@@ -66,7 +67,7 @@ object ViewHolderFactory {
             sectionView.text = data.section
 
             val url = data.media?.get(0)?.mediaMetadata?.get(0)?.url ?: ""
-            Glide.with(itemView.context).load(url).into(thumbnailView)
+            Glide.with(itemView.context).load(url).placeholder(R.drawable.ic_news).into(thumbnailView)
             dateView.text = data.publishedDate?.format(formatter)
 
             itemView.setOnClickListener {
