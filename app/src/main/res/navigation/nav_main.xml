@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_main.xml"
+            android:id="@+id/nav_main.xml"
             app:startDestination="@id/topStoriesFragment">
 
     <fragment
             android:id="@+id/topStoriesFragment"
-            android:name="com.eigendaksh.thenewsreader.ui.TopStoriesFragment"
-            android:label="Top Stories"
-            tools:layout="@layout/fragment_top_stories"/>
+            android:name="com.eigendaksh.thenewsreader.ui.views.TopStoriesFragment"
+            android:label="Top Stories"/>
 
     <fragment
             android:id="@+id/mostPopularFragment"
-            android:name="com.eigendaksh.thenewsreader.ui.MostPopularFragment"
-            android:label="Most Popular"
-            tools:layout="@layout/fragment_most_popular"/>
+            android:name="com.eigendaksh.thenewsreader.ui.views.MostPopularFragment"
+            android:label="Most Popular"/>
 
     <fragment
             android:id="@+id/businessFragment"
-            android:name="com.eigendaksh.thenewsreader.ui.BusinessFragment"
-            android:label="Business"
-            tools:layout="@layout/fragment_business"/>
+            android:name="com.eigendaksh.thenewsreader.ui.views.BusinessFragment"
+            android:label="Business"/>
 
     <fragment
             android:id="@+id/sportsFragment"
-            android:name="com.eigendaksh.thenewsreader.ui.SportsFragment"
-            android:label="Sports"
-            tools:layout="@layout/fragment_sports"/>
+            android:name="com.eigendaksh.thenewsreader.ui.views.SportsFragment"
+            android:label="Sports"/>
 </navigation>

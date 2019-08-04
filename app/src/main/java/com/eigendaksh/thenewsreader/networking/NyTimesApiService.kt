@@ -1,10 +1,8 @@
 package com.eigendaksh.thenewsreader.networking
 
-import com.eigendaksh.thenewsreader.model.news.NewsItem
-import com.eigendaksh.thenewsreader.model.news.NewsResponse
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsResponse
+import com.eigendaksh.thenewsreader.data.news.NewsResponse
+import com.eigendaksh.thenewsreader.data.popular.PopularNewsResponse
 import kotlinx.coroutines.Deferred
-import retrofit2.Response
 import retrofit2.http.GET
 
 interface NyTimesApiService {

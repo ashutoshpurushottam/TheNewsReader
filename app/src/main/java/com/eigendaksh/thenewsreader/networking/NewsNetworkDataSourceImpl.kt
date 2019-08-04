@@ -2,8 +2,8 @@ package com.eigendaksh.thenewsreader.networking
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.eigendaksh.thenewsreader.model.news.NewsResponse
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsResponse
+import com.eigendaksh.thenewsreader.data.news.NewsResponse
+import com.eigendaksh.thenewsreader.data.popular.PopularNewsResponse
 
 class NewsNetworkDataSourceImpl(
     private val service: NyTimesApiService

@@ -1,9 +1,9 @@
 package com.eigendaksh.thenewsreader.networking
 
 import android.util.Log
+import com.eigendaksh.thenewsreader.data.helpers.StoryTypeAdapter
+import com.eigendaksh.thenewsreader.data.helpers.ZonedDateTimeAdapter
 import com.eigendaksh.thenewsreader.internal.CoroutineCallAdapterFactory
-import com.eigendaksh.thenewsreader.model.helpers.StoryTypeAdapter
-import com.eigendaksh.thenewsreader.model.helpers.ZonedDateTimeAdapter
 import com.eigendaksh.thenewsreader.utils.AppConstants
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor

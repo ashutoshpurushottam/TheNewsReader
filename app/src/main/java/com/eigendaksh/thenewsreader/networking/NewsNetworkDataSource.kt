@@ -1,8 +1,8 @@
 package com.eigendaksh.thenewsreader.networking
 
 import androidx.lifecycle.LiveData
-import com.eigendaksh.thenewsreader.model.news.NewsResponse
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsResponse
+import com.eigendaksh.thenewsreader.data.news.NewsResponse
+import com.eigendaksh.thenewsreader.data.popular.PopularNewsResponse
 
 interface NewsNetworkDataSource {
     val downloadedTopStories: LiveData<NewsResponse>

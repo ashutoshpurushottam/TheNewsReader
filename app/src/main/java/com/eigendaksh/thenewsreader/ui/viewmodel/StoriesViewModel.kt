@@ -1,18 +1,16 @@
 package com.eigendaksh.thenewsreader.ui.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.*
-import com.eigendaksh.thenewsreader.model.db.LocalNewsDb
-import com.eigendaksh.thenewsreader.model.db.NewsItemDao
-import com.eigendaksh.thenewsreader.model.news.NewsItem
-import com.eigendaksh.thenewsreader.model.news.NewsResponse
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsItem
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsResponse
-import com.eigendaksh.thenewsreader.model.preferences.PreferenceHelper
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
+import com.eigendaksh.thenewsreader.data.db.LocalNewsDb
+import com.eigendaksh.thenewsreader.data.news.NewsItem
+import com.eigendaksh.thenewsreader.data.popular.PopularNewsItem
+import com.eigendaksh.thenewsreader.data.preferences.PreferenceHelper
 import com.eigendaksh.thenewsreader.networking.ApiFactory
-import com.eigendaksh.thenewsreader.networking.NewsNetworkDataSource
 import com.eigendaksh.thenewsreader.networking.NewsNetworkDataSourceImpl
-import com.eigendaksh.thenewsreader.repo.NewsRepo
 import com.eigendaksh.thenewsreader.repo.NewsRepoImpl
 import kotlinx.coroutines.launch
 

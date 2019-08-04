@@ -1,10 +1,8 @@
 package com.eigendaksh.thenewsreader.repo
 
 import androidx.lifecycle.LiveData
-import com.eigendaksh.thenewsreader.model.news.NewsItem
-import com.eigendaksh.thenewsreader.model.news.NewsResponse
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsItem
-import com.eigendaksh.thenewsreader.model.popular.PopularNewsResponse
+import com.eigendaksh.thenewsreader.data.news.NewsItem
+import com.eigendaksh.thenewsreader.data.popular.PopularNewsItem
 
 interface NewsRepo {
     suspend fun getTopStories() : LiveData<List<NewsItem>>
