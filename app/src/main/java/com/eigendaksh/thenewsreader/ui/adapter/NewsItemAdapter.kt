@@ -7,8 +7,8 @@ import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.data.news.StoryType
 
 class NewsItemAdapter(
-    private val itemList: List<NewsItem>,
-    private val listener: NewsItemListener
+    itemList: List<NewsItem>,
+    listener: NewsItemListener
 ): GenericAdapter<NewsItem>(itemList, listener) {
 
     override fun getLayoutId(position: Int, obj: NewsItem): Int {

@@ -55,5 +55,8 @@ class BusinessFragment : BaseNewsFragment() {
         viewModel.fetchBusinessStories()
     }
 
+    override fun onItemClicked(position: Int) {
+    }
+
 
 }

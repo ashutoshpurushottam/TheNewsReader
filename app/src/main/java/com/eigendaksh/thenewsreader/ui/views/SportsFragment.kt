@@ -51,5 +51,8 @@ class SportsFragment : BaseNewsFragment() {
         viewModel.fetchSportsStories()
     }
 
+    override fun onItemClicked(position: Int) {
+    }
+
 
 }

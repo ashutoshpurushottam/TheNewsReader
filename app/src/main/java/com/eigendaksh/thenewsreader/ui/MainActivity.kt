@@ -1,7 +1,10 @@
 package com.eigendaksh.thenewsreader.ui
 
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        setSupportActionBar(binding.toolbar)
         setUpNavigation()
     }
 
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         binding.bottomNavView.setupWithNavController(navController)
     }
+
 
     override fun onSupportNavigateUp() =
         findNavController(R.id.navHostFragment).navigateUp()

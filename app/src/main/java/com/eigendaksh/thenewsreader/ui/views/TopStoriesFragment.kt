@@ -2,13 +2,19 @@ package com.eigendaksh.thenewsreader.ui.views
 
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.eigendaksh.thenewsreader.R
 import com.eigendaksh.thenewsreader.base.BaseNewsFragment
 import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.ui.adapter.NewsItemAdapter
 import com.eigendaksh.thenewsreader.ui.viewmodel.StoriesViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class TopStoriesFragment : BaseNewsFragment() {
@@ -27,6 +33,7 @@ class TopStoriesFragment : BaseNewsFragment() {
         fetchTopStories()
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -43,8 +50,19 @@ class TopStoriesFragment : BaseNewsFragment() {
         })
     }
 
+    override fun onItemClicked(position: Int) {
+        val url = newsItemList?.get(position)?.url
+        url?.let {
+            val bundle = Bundle()
+            bundle.putString("web_url", it)
+            bundle.putString("web_title", newsItemList?.get(position)?.title ?: "")
+            NavHostFragment.findNavController(this).navigate(R.id.action_global_newsDetailFragment, bundle)
+        }
+    }
+
     private fun fetchTopStories() {
         viewModel.fetchTopStories()
     }
+
 
 }

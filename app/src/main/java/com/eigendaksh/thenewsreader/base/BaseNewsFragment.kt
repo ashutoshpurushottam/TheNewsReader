@@ -15,6 +15,7 @@ import com.eigendaksh.thenewsreader.R
 import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.ui.adapter.NewsItemAdapter
 import com.eigendaksh.thenewsreader.ui.adapter.NewsItemListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 abstract class BaseNewsFragment : Fragment(), NewsItemListener {
 
@@ -32,17 +33,13 @@ abstract class BaseNewsFragment : Fragment(), NewsItemListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.itemAnimator = DefaultItemAnimator()
-
+        activity?.findViewById<BottomNavigationView>(R.id.bottomNavView)?.visibility = View.VISIBLE
     }
 
     fun setAdapter(adapter: NewsItemAdapter) {
         recyclerView.adapter = adapter
     }
 
-    override fun onItemClicked(position: Int) {
-        val newsItem = getNewsItemList()?.get(position)
-        showToast(newsItem?.title)
-    }
 
     fun showToast(msg: String?) {
         val toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT)

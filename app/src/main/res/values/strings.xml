@@ -9,4 +9,5 @@
     <string name="menu_sports">Sports</string>
     <string name="thumbnail" translatable="false">news item image</string>
     <string name="fetch_failed">Failed to fetch news.</string>
+    <string name="eye">Eye</string>
 </resources>

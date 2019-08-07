@@ -51,4 +51,8 @@ class MostPopularFragment : BasePopularNewsFragment() {
         viewModel.fetchPopularStories()
     }
 
+    override fun onItemClicked(position: Int) {
+        super.onItemClicked(position)
+    }
+
 }

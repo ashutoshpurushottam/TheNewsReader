@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/nav_main.xml"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_main.xml"
             app:startDestination="@id/topStoriesFragment">
 
     <fragment
             android:id="@+id/topStoriesFragment"
             android:name="com.eigendaksh.thenewsreader.ui.views.TopStoriesFragment"
-            android:label="Top Stories"/>
+            android:label="Top Stories">
+        <argument
+                android:name="web_url"
+                app:argType="string"/>
+    </fragment>
 
     <fragment
             android:id="@+id/mostPopularFragment"
@@ -23,4 +27,9 @@
             android:id="@+id/sportsFragment"
             android:name="com.eigendaksh.thenewsreader.ui.views.SportsFragment"
             android:label="Sports"/>
+    <fragment android:id="@+id/newsDetailFragment"
+              android:name="com.eigendaksh.thenewsreader.ui.views.NewsDetailFragment"
+              android:label="News Details" tools:layout="@layout/fragment_news_detail"/>
+    <action android:id="@+id/action_global_newsDetailFragment"
+            app:destination="@id/newsDetailFragment"/>
 </navigation>
