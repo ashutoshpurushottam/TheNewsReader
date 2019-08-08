@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eigendaksh.thenewsreader.R
+import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.data.popular.PopularNewsItem
+import com.eigendaksh.thenewsreader.ui.adapter.NewsItemAdapter
 import com.eigendaksh.thenewsreader.ui.adapter.NewsItemListener
 import com.eigendaksh.thenewsreader.ui.adapter.PopularNewsItemAdapter
 
@@ -31,12 +33,15 @@ abstract class BasePopularNewsFragment : Fragment(), NewsItemListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.itemAnimator = DefaultItemAnimator()
-
-    }
-
-    fun setAdapter(adapter: PopularNewsItemAdapter) {
+        val adapter = PopularNewsItemAdapter(mutableListOf(), this)
         recyclerView.adapter = adapter
     }
+
+    fun updateItems(itemList: List<PopularNewsItem>) {
+        val adapter = recyclerView.adapter as PopularNewsItemAdapter
+        adapter.addItems(itemList)
+    }
+
 
     override fun onItemClicked(position: Int) {
         val newsItem = getPopularNewsItemList()?.get(position)

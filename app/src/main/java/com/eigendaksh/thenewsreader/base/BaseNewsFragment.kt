@@ -34,10 +34,13 @@ abstract class BaseNewsFragment : Fragment(), NewsItemListener {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.itemAnimator = DefaultItemAnimator()
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavView)?.visibility = View.VISIBLE
+        val adapter = NewsItemAdapter(mutableListOf(), this)
+        recyclerView.adapter = adapter
     }
 
-    fun setAdapter(adapter: NewsItemAdapter) {
-        recyclerView.adapter = adapter
+    fun updateItems(itemList: List<NewsItem>) {
+        val adapter = recyclerView.adapter as NewsItemAdapter
+        adapter.addItems(itemList)
     }
 
 

@@ -2,6 +2,7 @@ package com.eigendaksh.thenewsreader.ui.views
 
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -33,16 +34,13 @@ class BusinessFragment : BaseNewsFragment() {
         return newsItemList
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         viewModel.observableBusinessStories?.observe(viewLifecycleOwner, Observer { itemList ->
             if (itemList != null) {
                 hideProgress()
-                newsItemList = itemList
-                val adapter = NewsItemAdapter(itemList, this)
-                setAdapter(adapter)
+                updateItems(itemList)
             } else {
                 hideProgress()
                 showToast(getString(R.string.fetch_failed))

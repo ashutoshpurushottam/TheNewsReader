@@ -132,25 +132,21 @@ class NewsRepoImpl(
 
     private suspend fun fetchTopStories() {
         Log.d(TAG, "top stories fetched")
-        prefs[AppConstants.LAST_FETCH_TIME_TOP_STORY] = ZonedDateTime.now().toInstant().toEpochMilli()
         networkDataSource.getTopStories()
     }
 
     private suspend fun fetchBusinessStories() {
         Log.d(TAG, "business stories fetched")
-        prefs[AppConstants.LAST_FETCH_TIME_BUSINESS_STORY] = ZonedDateTime.now().toInstant().toEpochMilli()
         networkDataSource.getBusinessStories()
     }
 
     private suspend fun fetchSportsStories() {
         Log.d(TAG, "sports stories fetched")
-        prefs[AppConstants.LAST_FETCH_TIME_SPORTS_STORY] = ZonedDateTime.now().toInstant().toEpochMilli()
         networkDataSource.getSportsStories()
     }
 
     private suspend fun fetchPopularStories() {
         Log.d(TAG, "sports stories fetched")
-        prefs[AppConstants.LAST_FETCH_TIME_POPULAR_STORY] = ZonedDateTime.now().toInstant().toEpochMilli()
         networkDataSource.getMostPopularStories()
     }
 

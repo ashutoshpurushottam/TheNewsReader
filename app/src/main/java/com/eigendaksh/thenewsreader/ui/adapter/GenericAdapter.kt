@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class GenericAdapter<T>(
-    private val itemList: List<T>,
+    private val itemList: MutableList<T>,
     private val listener: NewsItemListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -27,6 +27,12 @@ abstract class GenericAdapter<T>(
 
     override fun getItemViewType(position: Int): Int {
         return getLayoutId(position, itemList[position])
+    }
+
+    fun addItems(items: List<T>) {
+        itemList.clear()
+        itemList.addAll(items)
+        notifyDataSetChanged()
     }
 
 

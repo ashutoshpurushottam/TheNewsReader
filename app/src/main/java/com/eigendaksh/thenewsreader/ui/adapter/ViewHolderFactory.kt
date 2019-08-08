@@ -41,7 +41,7 @@ object ViewHolderFactory {
             try {
                 url = data.multimedia?.get(0)?.url ?: ""
             } catch (e: IndexOutOfBoundsException) {
-                Log.e("ViewHolderFactory", e.message)
+                Log.w("ViewHolderFactory", e.localizedMessage ?: "")
             }
 
             Glide.with(itemView.context).load(url).placeholder(R.drawable.ic_news).into(thumbnailView)

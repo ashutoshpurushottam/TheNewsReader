@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class StoriesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val newsRepoImpl: NewsRepoImpl = NewsRepoImpl(
-        NewsNetworkDataSourceImpl(ApiFactory.service),
+        NewsNetworkDataSourceImpl(ApiFactory.service, PreferenceHelper.defaultPref(application)),
         LocalNewsDb.getInstance(application).newsItemDao(),
         LocalNewsDb.getInstance(application).popularNewsItemDao(),
         PreferenceHelper.defaultPref(application)

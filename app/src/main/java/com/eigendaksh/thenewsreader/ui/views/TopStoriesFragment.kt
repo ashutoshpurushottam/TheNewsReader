@@ -21,6 +21,7 @@ class TopStoriesFragment : BaseNewsFragment() {
 
     private val TAG by lazy { TopStoriesFragment::class.java.simpleName }
 
+
     private val viewModel by lazy { ViewModelProviders.of(this).get(StoriesViewModel::class.java) }
     private var newsItemList: List<NewsItem>? = emptyList()
 
@@ -33,16 +34,13 @@ class TopStoriesFragment : BaseNewsFragment() {
         fetchTopStories()
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         viewModel.observableTopStories?.observe(viewLifecycleOwner, Observer { itemList ->
             if (itemList != null) {
                 hideProgress()
-                newsItemList = itemList
-                val adapter = NewsItemAdapter(itemList, this)
-                setAdapter(adapter)
+                updateItems(itemList)
             } else {
                 hideProgress()
                 showToast(getString(R.string.fetch_failed))

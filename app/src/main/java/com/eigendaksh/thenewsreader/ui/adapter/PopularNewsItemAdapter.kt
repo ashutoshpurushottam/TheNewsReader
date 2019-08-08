@@ -7,7 +7,7 @@ import com.eigendaksh.thenewsreader.data.news.StoryType
 import com.eigendaksh.thenewsreader.data.popular.PopularNewsItem
 
 class PopularNewsItemAdapter(
-    itemList: List<PopularNewsItem>,
+    itemList: MutableList<PopularNewsItem>,
     listener: NewsItemListener
 ): GenericAdapter<PopularNewsItem>(itemList, listener) {
 
