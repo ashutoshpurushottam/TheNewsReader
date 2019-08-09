@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 
 import com.eigendaksh.thenewsreader.R
+import com.eigendaksh.thenewsreader.utils.AppConstants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_news_detail.*
 
@@ -31,13 +32,24 @@ class NewsDetailFragment : Fragment() {
     private val TAG by lazy { NewsDetailFragment::class.java.simpleName }
 
     private var webUrl: String? = ""
+    private var title: String? = ""
+    private var isRead: Boolean = false
+    private var isPopular: Boolean = false
     private var progressBar: ProgressBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            webUrl = it.getString("web_url")
+            webUrl = it.getString(AppConstants.URL_KEY)
+            title = it.getString(AppConstants.TITLE_KEY)
+            isRead = it.getBoolean(AppConstants.IS_READ_KEY)
+            isPopular = it.getBoolean(AppConstants.IS_POPULAR_KEY)
         }
+
+        Log.d(TAG, "webUrl: $webUrl")
+        Log.d(TAG, "title: $title")
+        Log.d(TAG, "isRead: $isRead")
+        Log.d(TAG, "isPopular: $isPopular")
     }
 
     override fun onCreateView(
@@ -61,6 +73,7 @@ class NewsDetailFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onStart() {
         super.onStart()
+
 
         webView.webViewClient = object: WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {

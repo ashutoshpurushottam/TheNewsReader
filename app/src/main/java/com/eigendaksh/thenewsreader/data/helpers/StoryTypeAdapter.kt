@@ -13,7 +13,7 @@ class StoryTypeAdapter {
 
     // Outputs the ZonedDateTime as a string
     @ToJson
-    fun toJson(value: ZonedDateTime?): String? {
+    fun toJson(value: StoryType?): String? {
         return if (value != null) value.toString() else null
     }
 }

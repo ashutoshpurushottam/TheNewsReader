@@ -12,6 +12,7 @@ import com.eigendaksh.thenewsreader.data.preferences.PreferenceHelper
 import com.eigendaksh.thenewsreader.networking.ApiFactory
 import com.eigendaksh.thenewsreader.networking.NewsNetworkDataSourceImpl
 import com.eigendaksh.thenewsreader.repo.NewsRepoImpl
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class StoriesViewModel(application: Application) : AndroidViewModel(application) {
@@ -23,17 +24,10 @@ class StoriesViewModel(application: Application) : AndroidViewModel(application)
         PreferenceHelper.defaultPref(application)
     )
 
-    val observableTopStories: MutableLiveData<List<NewsItem>>?
-    val observableBusinessStories: MutableLiveData<List<NewsItem>>?
-    val observableSportsStories: MutableLiveData<List<NewsItem>>?
-    val observablePopularStories: MutableLiveData<List<PopularNewsItem>>?
-
-    init {
-        observableTopStories = MutableLiveData()
-        observableBusinessStories = MutableLiveData()
-        observableSportsStories = MutableLiveData()
-        observablePopularStories = MutableLiveData()
-    }
+    val observableTopStories: MutableLiveData<List<NewsItem>>? = MutableLiveData()
+    val observableBusinessStories: MutableLiveData<List<NewsItem>>? = MutableLiveData()
+    val observableSportsStories: MutableLiveData<List<NewsItem>>? = MutableLiveData()
+    val observablePopularStories: MutableLiveData<List<PopularNewsItem>>? = MutableLiveData()
 
     fun fetchTopStories() {
         viewModelScope.launch {
@@ -67,4 +61,15 @@ class StoriesViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+     fun updateNewsItem(title: String) {
+         viewModelScope.launch(Dispatchers.IO) {
+             newsRepoImpl.updateNewsItem(title)
+         }
+     }
+
+    fun updatePopularNewsItem(title: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            newsRepoImpl.updatePopularNewsItem(title)
+        }
+    }
 }

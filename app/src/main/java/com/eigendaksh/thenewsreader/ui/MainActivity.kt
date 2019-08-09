@@ -1,10 +1,7 @@
 package com.eigendaksh.thenewsreader.ui
 
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -15,6 +12,8 @@ import com.eigendaksh.thenewsreader.R
 import com.eigendaksh.thenewsreader.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private val TAG by lazy { MainActivity::class.java.simpleName }
 
     lateinit var navController: NavController
     lateinit var navHostFragment: NavHostFragment
@@ -27,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         setUpNavigation()
     }
 
-
     private fun setUpNavigation() {
         //NavHostFragment needs to be updated with a new nav_graph when you have more than 1 graphs
         navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
@@ -36,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         binding.bottomNavView.setupWithNavController(navController)
     }
+
+
 
 
     override fun onSupportNavigateUp() =

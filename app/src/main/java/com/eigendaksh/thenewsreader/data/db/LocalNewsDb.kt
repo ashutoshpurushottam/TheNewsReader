@@ -9,7 +9,7 @@ import com.eigendaksh.thenewsreader.data.helpers.Converters
 import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.data.popular.PopularNewsItem
 
-@Database(entities = [NewsItem::class, PopularNewsItem::class], version = 4, exportSchema = false )
+@Database(entities = [NewsItem::class, PopularNewsItem::class], version = 5, exportSchema = false )
 @TypeConverters(Converters::class)
 abstract class LocalNewsDb : RoomDatabase() {
 

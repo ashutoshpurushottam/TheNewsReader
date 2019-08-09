@@ -2,11 +2,12 @@ package com.eigendaksh.thenewsreader.data.news
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import org.threeten.bp.ZonedDateTime
 
-@Entity(tableName = "news_item")
+@Entity(tableName = "news_item", indices = [Index(value = ["title"], unique = true)])
 data class NewsItem(
 
     @PrimaryKey(autoGenerate = true) var itemId: Int = 0,
@@ -35,5 +36,7 @@ data class NewsItem(
 
     var url: String? = "",
 
-    var type: StoryType = StoryType.NONE
+    var type: StoryType = StoryType.NONE,
+
+    var isRead: Boolean = false
 )

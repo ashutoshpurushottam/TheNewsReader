@@ -13,6 +13,7 @@ import com.eigendaksh.thenewsreader.base.BaseNewsFragment
 import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.ui.adapter.NewsItemAdapter
 import com.eigendaksh.thenewsreader.ui.viewmodel.StoriesViewModel
+import com.eigendaksh.thenewsreader.utils.AppConstants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -49,11 +50,13 @@ class TopStoriesFragment : BaseNewsFragment() {
     }
 
     override fun onItemClicked(position: Int) {
-        val url = newsItemList?.get(position)?.url
-        url?.let {
+        val item = newsItemList?.get(position)
+        item?.let {
             val bundle = Bundle()
-            bundle.putString("web_url", it)
-            bundle.putString("web_title", newsItemList?.get(position)?.title ?: "")
+            bundle.putString(AppConstants.URL_KEY, it.url)
+            bundle.putString(AppConstants.TITLE_KEY, it.title)
+            bundle.putBoolean(AppConstants.IS_POPULAR_KEY, false)
+            bundle.putBoolean(AppConstants.IS_READ_KEY, item.isRead)
             NavHostFragment.findNavController(this).navigate(R.id.action_global_newsDetailFragment, bundle)
         }
     }

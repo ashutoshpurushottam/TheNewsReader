@@ -6,11 +6,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import com.eigendaksh.thenewsreader.R
 import com.eigendaksh.thenewsreader.base.BaseNewsFragment
 import com.eigendaksh.thenewsreader.data.news.NewsItem
 import com.eigendaksh.thenewsreader.ui.adapter.NewsItemAdapter
 import com.eigendaksh.thenewsreader.ui.viewmodel.StoriesViewModel
+import com.eigendaksh.thenewsreader.utils.AppConstants
 
 
 /**
@@ -54,7 +56,14 @@ class BusinessFragment : BaseNewsFragment() {
     }
 
     override fun onItemClicked(position: Int) {
+        val item = newsItemList?.get(position)
+        item?.let {
+            val bundle = Bundle()
+            bundle.putString(AppConstants.URL_KEY, it.url)
+            bundle.putString(AppConstants.TITLE_KEY, it.title)
+            bundle.putBoolean(AppConstants.IS_POPULAR_KEY, false)
+            bundle.putBoolean(AppConstants.IS_READ_KEY, item.isRead)
+            NavHostFragment.findNavController(this).navigate(R.id.action_global_newsDetailFragment, bundle)
+        }
     }
-
-
 }

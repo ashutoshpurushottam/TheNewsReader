@@ -2,10 +2,11 @@ package com.eigendaksh.thenewsreader.data.popular
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
-@Entity(tableName = "popular_news_item")
+@Entity(tableName = "popular_news_item", indices = [Index(value = ["title"], unique = true)])
 data class PopularNewsItem(
     @PrimaryKey(autoGenerate = true) var itemId: Int = 0,
 
@@ -21,6 +22,8 @@ data class PopularNewsItem(
 
     var title: String? = "",
 
-    val url: String? = ""
+    val url: String? = "",
+
+    var isRead: Boolean
 )
 

@@ -1,10 +1,7 @@
 package com.eigendaksh.thenewsreader.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.eigendaksh.thenewsreader.data.news.NewsItem
 
 @Dao
@@ -13,7 +10,7 @@ interface NewsItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(newsItem: NewsItem)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(newsItemList: List<NewsItem>?)
 
     @Query("SELECT * from news_item WHERE type = 'TOP_STORY' ORDER BY published_date DESC")
@@ -36,5 +33,11 @@ interface NewsItemDao {
 
     @Query("DELETE FROM news_item WHERE type = 'SPORTS_STORY'")
     fun deleteAllSportsStories()
+
+    @Query("SELECT * FROM news_item WHERE title = :title")
+    fun getNewsItemFromTitle(title: String): NewsItem?
+
+    @Update
+    fun updateItem(vararg newsItem: NewsItem)
 
 }

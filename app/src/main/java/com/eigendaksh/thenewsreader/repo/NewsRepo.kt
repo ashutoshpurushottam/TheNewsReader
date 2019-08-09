@@ -9,4 +9,8 @@ interface NewsRepo {
     suspend fun getPopularStories(): LiveData<List<PopularNewsItem>>
     suspend fun getSportsStories(): LiveData<List<NewsItem>>
     suspend fun getBusinessStories(): LiveData<List<NewsItem>>
+    fun updateNewsItem(title: String)
+    fun updatePopularNewsItem(title: String)
+    fun deleteAllNewsItem()
+    fun deleteAllPopularNewsItem()
 }

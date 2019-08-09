@@ -219,5 +219,28 @@ class NewsRepoImpl(
         }
     }
 
+    override fun updateNewsItem(title: String) {
+        val item = newsItemDao.getNewsItemFromTitle(title)
+        item?.isRead = true
+        item?.let {
+            newsItemDao.updateItem(it)
+        }
+    }
 
+    override fun updatePopularNewsItem(title: String) {
+        val item = popularNewsItemDao.getNewsItemFromTitle(title)
+        item?.isRead = true
+        item?.let {
+            popularNewsItemDao.updatePopularItem(it)
+        }
+    }
+
+    override fun deleteAllNewsItem() {
+        newsItemDao.deleteAll()
+    }
+
+
+    override fun deleteAllPopularNewsItem() {
+        popularNewsItemDao.deleteAllPopularStories()
+    }
 }
